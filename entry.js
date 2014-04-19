@@ -29,7 +29,7 @@ Bot.register('nkouevda', function(board_state, player_state, move) {
     num_opts = board.safe_surrounding_tiles(dest).length;
 
     if (num_opts > best_num_opts) {
-      num_opts = best_num_opts;
+      best_num_opts = num_opts;
       best_dir = ordered_safe_dirs[i];
     }
   }
