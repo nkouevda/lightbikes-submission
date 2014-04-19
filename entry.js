@@ -6,6 +6,11 @@ Bot.register('nkouevda', function(board_state, player_state, move) {
   var board = board_state.board;
   var safe_dirs = board.safe_directions(me);
 
+  if (safe_dirs.length === 0) {
+    move(me.straight());
+    return;
+  }
+
   var ordered_dirs = [
     me.sharp_left(), me.left(), me.straight(), me.right(), me.sharp_right()
   ];
