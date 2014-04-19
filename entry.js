@@ -2,7 +2,20 @@
 // 2014/04/19
 
 Bot.register('nkouevda', function(board_state, player_state, move) {
-  var safe_dirs = board_state.board.safe_directions(board_state.me);
+  var me = board_state.me;
+  var them = board_state.them;
+  var board = board_state.board;
+  var safe_dirs = board.safe_directions(me);
 
-  move(safe_dirs[Math.floor(Math.random() * safe_dirs.length)]);
+  if (_.contains(safe_dirs, me.left())) {
+    move(me.left());
+  } else if(_.contains(safe_dirs, me.straight())) {
+    move(me.straight());
+  } else if(_.contains(safe_dirs, me.right())) {
+    move(me.right());
+  } else if(_.contains(safe_dirs, me.sharp_right())) {
+    move(me.sharp_right());
+  } else {
+    move(me.sharp_left());
+  }
 })
