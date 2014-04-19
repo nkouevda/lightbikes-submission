@@ -6,27 +6,13 @@ Bot.register('nkouevda', function(board_state, player_state, move) {
   var board = board_state.board;
   var safe_dirs = board.safe_directions(me);
 
-  var ordered_safe_dirs = [];
+  var ordered_dirs = [
+    me.sharp_left(), me.left(), me.straight(), me.right(), me.sharp_right()
+  ];
 
-  if (_.contains(safe_dirs, me.sharp_left())) {
-    ordered_safe_dirs.push(me.sharp_left());
-  }
-
-  if (_.contains(safe_dirs, me.left())) {
-    ordered_safe_dirs.push(me.left());
-  }
-
-  if (_.contains(safe_dirs, me.straight())) {
-    ordered_safe_dirs.push(me.straight());
-  }
-
-  if (_.contains(safe_dirs, me.right())) {
-    ordered_safe_dirs.push(me.right());
-  }
-
-  if (_.contains(safe_dirs, me.sharp_right())) {
-    ordered_safe_dirs.push(me.sharp_right());
-  }
+  var ordered_safe_dirs = _.filter(ordered_dirs, function(dir) {
+    return _.contains(safe_dirs, dir);
+  });
 
   var dest = board.new_coords_from_dir(me, ordered_safe_dirs[0]);
   var best_dir = ordered_safe_dirs[0];
