@@ -12,7 +12,7 @@ Bot.register('nkouevda', function(board_state, player_state, move) {
   }
 
   var ordered_dirs = [
-    me.sharp_left(), me.left(), me.straight(), me.right(), me.sharp_right()
+    me.sharp_right(), me.right(), me.straight(), me.left(), me.sharp_left()
   ];
 
   var ordered_safe_dirs = _.filter(ordered_dirs, function(dir) {
