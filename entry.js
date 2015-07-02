@@ -1,6 +1,3 @@
-// Nikita Kouevda
-// 2014/04/19
-
 Bot.register('nkouevda', function(board_state, player_state, move) {
   var me = board_state.me;
   var board = board_state.board;
